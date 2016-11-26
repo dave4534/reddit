@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-app="reddit" class="container">
+  <div ng-controller="redditControl">
+    <div class="row firstRow">
+      <div class="column col-sm-4">
+      <!-- Posts -->
+        <h2>Posts</h2>
+        <!-- Repeat -->
+        <div ng-model="postList" ng-repeat="x in postArray | orderBy:'score'"><ul>
+        <i ng-click="increaseScore($index)" class="upvote fa fa-thumbs-up fa-3x" aria-hidden="true"></i>{{x.score}} - {{x.postText}}<button ng-click="removeItem($index)" class="btn">Remove</button> </ul></div>
+        <!-- Input -->
+        <input type="text" class="input form-control" ng-model="postInput"/>
+        <!-- Submit Buttons -->
+        <input class="form-control" type="submit" placeholder="Submit" ng-click="addToArray()">
+        
+
+      </div>
+    </div>
+  </div>
+
+  <script src="node_modules/angular/angular.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="controller.js"></script>
+  <script type="text/javascript" src="service.js"></script>
+</body>
+</html>
